@@ -19,11 +19,11 @@ int Heap::parent(int i) {
 }
 
 int Heap::left(int i) {
-  return (2*i)+1;
+  return ((2*i)+1);
 }
 
 int Heap::right(int i) {
-  return (2*1)+2;
+  return ((2*1)+2);
 }
 
 int Heap::getMax() {
@@ -83,8 +83,8 @@ void Heap::swap(int *x, int *y) {
 }
 
 void Heap::Heapify(int i) {
-  int l = left(i);
-  int r = right(i);
+  int l = (2*i)+1;
+  int r = (2*i)+2;
   int largest = i;
   if (l < heap_size && arr[l] > arr[i]) {
     largest = l;
@@ -108,11 +108,16 @@ void Heap::printHeap() {
     cout << arr[counter] << " ";
     counter++;
   }
+  /*cout << endl;
+  cout << "   " << arr[0] << endl;
+  cout << "  " << arr[1] << " " << arr[2] << endl;
+  cout << arr[3] << " " << arr[4] << " " << arr[5] << " " << arr[6] << endl;*/
 }
 
-void Heap::printHeap2() {
+void Heap::printHeap2(int sizeh) {
   int counter = 0;
-  while (counter < sizeof(arr2)) {
+  int s = sizeh;
+  while (counter < s) {
     cout << arr2[counter] << " ";
     counter++;
   }
@@ -120,14 +125,16 @@ void Heap::printHeap2() {
 
 void Heap::deletion() {
   int twoCount = 0;
+  int hsize = heap_size;
   while (arr[0] != NULL) {
     arr2[twoCount] = arr[0];
-    //printHeap2();
-    //cout << "Array: " << arr2[twoCount] << ", twoCount: " << twoCount << endl;
     twoCount++;
     int last = arr[heap_size-1];
     arr[0] = last;
     heap_size--;
     Heapify(0);
   }
+  cout << "Output: ";
+  printHeap2(hsize);
+  cout << endl;
 }

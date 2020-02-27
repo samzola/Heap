@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include <cstring>
 #include "heap.h"
 
@@ -20,7 +21,7 @@ int main() {
   h.printHeap();
   cout << endl;
   h.deletion();
-  cout << "Output: ";
-  h.printHeap2();
-  cout << endl;
+  //cout << "Output: ";
+  //h.printHeap2();
+  //cout << endl;
 }

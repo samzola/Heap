@@ -23,7 +23,7 @@ class Heap {
   void swap(int*, int*);
   int getKey(int);
   void printHeap();
-  void printHeap2();
+  void printHeap2(int);
   void increaseKey(int, int);
   void deletion();
 private:
