@@ -17,11 +17,11 @@ class Heap {
   int right(int);
   void deleteKey(int);
   void insertKey(int);
-  int getMin();
-  int extractMin();
+  int getMax();
+  int extractMax();
   void swap(int*, int*);
-  void decreaseKey(int, int);
   int getKey(int);
   void printHeap();
+  void decreaseKey(int, int);
  private:
 };

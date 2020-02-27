@@ -25,11 +25,11 @@ int Heap::right(int i) {
   return (2*1)+2;
 }
 
-int Heap::getMin() {
+int Heap::getMax() {
   return arr[0];
 }
 
-int Heap::extractMin() {
+int Heap::extractMax() {
   if (heap_size <= 0) {
     return INT_MAX;
   }
@@ -47,8 +47,8 @@ int Heap::extractMin() {
 }
 
 void Heap::deleteKey(int i) {
-  decreaseKey(i, INT_MIN);
-  extractMin();
+  decreaseKey(i, INT_MAX);
+  extractMax();
 }
 
 void Heap::insertKey(int k) {
@@ -60,7 +60,7 @@ void Heap::insertKey(int k) {
   heap_size++;
   int i = heap_size - 1;
   arr[i] = k;
-  while (i != 0 && arr[parent(i)] > arr[i]) {
+  while (i != 0 && arr[parent(i)] < arr[i]) {
     swap(&arr[i], &arr[parent(i)]);
     i = parent(i);
   }
@@ -68,7 +68,7 @@ void Heap::insertKey(int k) {
 
 void Heap::decreaseKey(int i, int newval) {
   arr[i] = newval;
-  while (i != 0 && arr[parent(i)] > arr[i]) {
+  while (i != 0 && arr[parent(i)] < arr[i]) {
     swap(&arr[i], &arr[parent(i)]);
     i = parent(i);
   }
@@ -83,16 +83,16 @@ void Heap::swap(int *x, int *y) {
 void Heap::Heapify(int i) {
   int l = left(i);
   int r = right(i);
-  int smallest = i;
-  if (l < heap_size && arr[l] < arr[i]) {
-    smallest = l;
+  int largest = i;
+  if (l < heap_size && arr[l] > arr[i]) {
+    largest = l;
   }
-  if (r < heap_size && arr[r] < arr[smallest]) {
-    smallest = r;
+  if (r < heap_size && arr[r] > arr[largest]) {
+    largest = r;
   }
-  if (smallest != i) {
-    swap(&arr[i], &arr[smallest]);
-    Heapify(smallest);
+  if (largest != i) {
+    swap(&arr[i], &arr[largest]);
+    Heapify(largest);
   }
 }
 
