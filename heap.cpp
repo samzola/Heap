@@ -104,14 +104,27 @@ int Heap::getKey(int i) {
 
 void Heap::printHeap() {
   int counter = 0;
-  while (counter < heap_size) {
+  /*while (counter < heap_size) {
     cout << arr[counter] << " ";
     counter++;
-  }
+  }*/
   /*cout << endl;
   cout << "   " << arr[0] << endl;
   cout << "  " << arr[1] << " " << arr[2] << endl;
   cout << arr[3] << " " << arr[4] << " " << arr[5] << " " << arr[6] << endl;*/
+  cout << endl;
+  int num = 1;
+  int printed = 0;
+  for (int i = 0; i < heap_size; i++) {
+    cout << arr[i] << " ";
+    printed++;
+    if (printed == num) {
+      cout << endl;
+      num = num << 1;
+      printed = 0;
+    }
+  }
+  cout << endl;
 }
 
 void Heap::printHeap2(int sizeh) {
