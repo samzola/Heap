@@ -9,6 +9,7 @@ Heap::Heap(int cap) {
   heap_size = 0;
   capacity = cap;
   arr = new int[cap];
+  arr2 = new int[cap];
 }
 
 Heap::~Heap() {}
@@ -47,7 +48,7 @@ int Heap::extractMax() {
 }
 
 void Heap::deleteKey(int i) {
-  decreaseKey(i, INT_MAX);
+  increaseKey(i, INT_MAX);
   extractMax();
 }
 
@@ -66,7 +67,8 @@ void Heap::insertKey(int k) {
   }
 }
 
-void Heap::decreaseKey(int i, int newval) {
+
+void Heap::increaseKey(int i, int newval) {
   arr[i] = newval;
   while (i != 0 && arr[parent(i)] < arr[i]) {
     swap(&arr[i], &arr[parent(i)]);
@@ -105,5 +107,27 @@ void Heap::printHeap() {
   while (counter < heap_size) {
     cout << arr[counter] << " ";
     counter++;
+  }
+}
+
+void Heap::printHeap2() {
+  int counter = 0;
+  while (counter < sizeof(arr2)) {
+    cout << arr2[counter] << " ";
+    counter++;
+  }
+}
+
+void Heap::deletion() {
+  int twoCount = 0;
+  while (arr[0] != NULL) {
+    arr2[twoCount] = arr[0];
+    //printHeap2();
+    //cout << "Array: " << arr2[twoCount] << ", twoCount: " << twoCount << endl;
+    twoCount++;
+    int last = arr[heap_size-1];
+    arr[0] = last;
+    heap_size--;
+    Heapify(0);
   }
 }

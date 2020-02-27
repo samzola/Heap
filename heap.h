@@ -6,6 +6,7 @@ using namespace std;
 
 class Heap {
   int *arr;
+  int *arr2;
   int capacity;
   int heap_size;
  public:
@@ -22,6 +23,8 @@ class Heap {
   void swap(int*, int*);
   int getKey(int);
   void printHeap();
-  void decreaseKey(int, int);
- private:
+  void printHeap2();
+  void increaseKey(int, int);
+  void deletion();
+private:
 };

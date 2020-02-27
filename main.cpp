@@ -16,5 +16,11 @@ int main() {
     h.insertKey(token2);
     token = strtok(NULL, " ");
   }
+  cout << "Heap: ";
   h.printHeap();
+  cout << endl;
+  h.deletion();
+  cout << "Output: ";
+  h.printHeap2();
+  cout << endl;
 }
